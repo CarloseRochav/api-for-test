@@ -1,0 +1,15 @@
+{
+  "name": "apiforTest",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "CarloseRochav <78558271+CarloseRochav@users.noreply.github.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js",
+    "run-dev":"nodemon index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.14"
+  }
+}
