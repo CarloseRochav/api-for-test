@@ -8,5 +8,9 @@ router.get('/hola',()=>{
     console.log("Bienvenido a la ruta /hola")
 })
 
+router.get('bienvenido',()=>{
+    console.log("Bienvenidos sean todos a la api")
+})
 
-module.exports=router; //Exportancion de router --con rutas
+
+module.exports=router; //Exportacion de router --con rutas
