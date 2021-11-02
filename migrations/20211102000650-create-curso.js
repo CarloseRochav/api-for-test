@@ -2,15 +2,12 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Cursos', {
-      id: {
+      numero: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
-      },
-      numero: {
-        type: Sequelize.INTEGER
-      },
+      },      
       deporte: {
         type: Sequelize.STRING
       },

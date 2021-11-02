@@ -2,7 +2,9 @@ const express = require("express");
 const saludos = require('./src/routes/saludos');
 
 //SEQUELIZE
-const { sequelize } = require("./database/models/index");
+const{sequelize} = require('./models/index');
+
+
 
 
 // Crear el servidor

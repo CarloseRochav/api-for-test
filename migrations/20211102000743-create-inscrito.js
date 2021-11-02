@@ -2,17 +2,15 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Inscritos', {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER
-      },
       documentoSocio: {
+        allowNull: false,        
+        primaryKey: true,
         type: Sequelize.STRING
-      },
+      },      
       numero: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,        
+        primaryKey: true,        
       },
       matricula: {
         type: Sequelize.STRING

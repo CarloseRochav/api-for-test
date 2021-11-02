@@ -12,3 +12,10 @@ npx sequelize-cli model:generate --name Curso --attributes numero:integer,deport
 INSCRITOS 
 npx sequelize-cli model:generate --name Inscrito --attributes documentoSocio:string,numero:integer,matricula:string 
 
+doing migrate
+npx sequelize-cli db:migrate
+
+undoing migrate
+npx sequelize-cli db:migrate:undo:all
+;all migrations
+
