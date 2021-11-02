@@ -1,0 +1,3 @@
+Execute Yarn to install dependencies
+
+	Api Rest with Sequelize and MSSQL
