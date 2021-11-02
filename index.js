@@ -1,5 +1,6 @@
 const express = require("express");
 const saludos = require('./src/routes/saludos');
+const socios = require('./src/routes/socios');
 
 //SEQUELIZE
 const{sequelize} = require('./models/index');
@@ -12,6 +13,7 @@ const app = express();
 
 //Rutas
 app.use(saludos);
+app.use(socios);
 
 //Uso de bodyParser
 app.use(express.urlencoded({ extended: true }));
