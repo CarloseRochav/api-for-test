@@ -1,4 +1,4 @@
-const Socio = require('../../models/socio');
+const {Socio} = require('../../models');
 
 
 //Create socio
@@ -6,9 +6,11 @@ exports.postSocio = async (req,res)=>{
 
     const documento = req.body.documento;    
     const nombre = req.body.nombre;    
-    const domicilio = req.body.domicilio;    
+    const domicilio = req.body.domicilio;        
 
     console.log(req.body);
+
+    try{
 
     const nuevoSocio ={
         documento:documento,
@@ -17,16 +19,41 @@ exports.postSocio = async (req,res)=>{
     }
 
     await Socio.create(nuevoSocio);
+    res.send({
+        MSG:"Succesfully !"
+    })
+
+    }
+    catch(error){
+        res.send({
+            msg:error
+        })
+    }
 
 }
 
 //Obtener Socios
-exports.getSocios = async()=>{
+exports.getSocios = async(req,res)=>{
 
-    await Socio.findAll();
-    if (!Socio || !Socio.length) {
-        throw customError(404, "No hay usuarios en la base de datos.");
-      }
-      return Socio;
+    try{
+    
+        const Socios = await Socio.findAll();
+    
+        if (!Socio || !Socio.length) {
+        
+            throw customError(404, "No hay usuarios en la base de datos.");
+        }      
+    
+        return Socios;
+        
+    }
+    catch(error){
+
+            console.log(error);
+
+            res.send({
+                msg:`Error : ${error}`
+            })
+    }
 }
 

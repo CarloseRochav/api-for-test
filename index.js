@@ -5,19 +5,16 @@ const socios = require('./src/routes/socios');
 //SEQUELIZE
 const{sequelize} = require('./models/index');
 
-
-
-
 // Crear el servidor
 const app = express();
+
+//Uso de bodyParser ; Importatn : put codelines before of load the routes
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 //Rutas
 app.use(saludos);
 app.use(socios);
-
-//Uso de bodyParser
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
 
 // puerto de la apps
 const port = process.env.PORT || 8080;
