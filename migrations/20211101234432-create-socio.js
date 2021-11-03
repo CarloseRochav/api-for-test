@@ -3,6 +3,12 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     
     await queryInterface.createTable('Socios', {
+      id:{
+        allowNull: false,
+        autoIncrement: true,        
+        primaryKey: true,        
+        type: Sequelize.INTEGER,        
+      },
       documento: {
         allowNull: false,        
         primaryKey: true,
@@ -15,13 +21,13 @@ module.exports = {
         type: Sequelize.STRING
       },
       createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.NOW,
       },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
+        updatedAt: {
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.NOW,
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {

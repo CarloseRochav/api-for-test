@@ -39,12 +39,12 @@ exports.getSocios = async(req,res)=>{
     
         const Socios = await Socio.findAll();
     
-        if (!Socio || !Socio.length) {
+        // if (!Socio || !Socio.length) {
         
-            throw customError(404, "No hay usuarios en la base de datos.");
-        }      
-    
-        return Socios;
+        //     throw console.log(404, "No hay usuarios en la base de datos.");
+        // }      
+        console.log(Socios);
+        res.send(Socios);//Responde con la lista de socios 
         
     }
     catch(error){
