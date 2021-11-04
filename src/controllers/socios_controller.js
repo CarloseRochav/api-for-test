@@ -1,32 +1,55 @@
-const {Socio} = require('../../models');
+const {Socio, Sequelize} = require('../../models');
+const {sequelize} = require('../../models/'); //Forma correcta de llamar a la base de datos
+const {db} = require('../../models/'); //Forma correcta de llamar a la base de datos
+const { QueryTypes } = require('sequelize');
+
+
 
 
 //Create socio
 exports.postSocio = async (req,res)=>{
 
-    const documento = req.body.documento;    
-    const nombre = req.body.nombre;    
-    const domicilio = req.body.domicilio;        
+    const _documento = req.body.documento;    
+    const _nombre = req.body.nombre;    
+    const _domicilio = req.body.domicilio;        
 
     console.log(req.body);
 
     try{
 
-    const nuevoSocio ={
-        documento:documento,
-        nombre:nombre,
-        domicilio:domicilio
+    const nuevoSocio = await {
+        documento:_documento,
+        nombre:_nombre,
+        domicilio:_domicilio
     }
 
-    await Socio.create(nuevoSocio);
+    // await Socio.create(nuevoSocio);
+
+    const socio = await sequelize.query('INSERT INTO Socios Values (:doc,:nom,:dom,:startAt,:upAt)', {
+        replacements: 
+        {
+            doc:nuevoSocio.documento,
+            nom:nuevoSocio.nombre,
+            dom:nuevoSocio.domicilio,
+            startAt:new Date(Date.now()).toISOString(),
+            upAt:new Date(Date.now()).toISOString()
+            // startAt:'2019-09-21',
+            //upAt:'2019-09-21'
+        },
+
+        type: sequelize.QueryTypes.INSERT
+      });
+ 
     res.send({
-        MSG:"Succesfully !"
+        MSG:"Succesfully !",
+        Socio: nuevoSocio
     })
 
     }
     catch(error){
+        console.log(`Ups un error ! : ${error}`)
         res.send({
-            msg:error
+            msg:`Error en : ${error}`
         })
     }
 
@@ -35,9 +58,11 @@ exports.postSocio = async (req,res)=>{
 //Obtener Socios
 exports.getSocios = async(req,res)=>{
 
-    try{
-    
+    try{    
         const Socios = await Socio.findAll();
+
+        //Usando Raw Querys
+        
     
         // if (!Socio || !Socio.length) {
         

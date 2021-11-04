@@ -2,7 +2,7 @@
   "development": {
     "username": "superCollider",
     "password": "Tlaltecuhtli1489",
-    "database": "paraApi",
+    "database": "paraApi",    
     "host": "127.0.0.1",
     "port":"1434",
     "dialect": "mssql"
